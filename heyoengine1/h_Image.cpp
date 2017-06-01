@@ -1,4 +1,5 @@
 #include "h_Image.h"
+#include "h_Graphics.h"
 #include <SDL_image.h>
 
 namespace Heyo {
@@ -69,12 +70,12 @@ namespace Heyo {
 		return m_height;
 	}
 
-	Rect Texture::getRect()
+	SDL_Rect Texture::getRect()
 	{
 		return img_Rect;
 	}
 
-	bool Texture::setRect(Rect clip)
+	bool Texture::setRect(SDL_Rect clip)
 	{
 		if (clip.h > m_height || clip.w > m_width) {
 			SDL_Log("Texture error: Passed Rect in setRect is out of bound.\n");

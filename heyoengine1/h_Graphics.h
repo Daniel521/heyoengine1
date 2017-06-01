@@ -2,7 +2,9 @@
 
 #include "h_Image.h"
 #include <SDL.h>
+#include <SDL_image.h>
 #include <string>
+
 
 namespace Heyo {
 
@@ -31,8 +33,10 @@ namespace Heyo {
 		~Graphics();
 
 		void update();
-		//void update(Texture & p_texture);
+		void update(Texture & p_texture);
 		//void update(Texture & p_texture, Coord clip);
+
+		void render();
 
 		void drawPixel(int x, int y, Uint8 r = 0xFF, Uint8 g = 0xFF, Uint8 b = 0xFF);
 

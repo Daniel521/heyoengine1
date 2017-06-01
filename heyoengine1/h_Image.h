@@ -1,10 +1,13 @@
 #pragma once
 
-#include "h_Graphics.h"
 #include <SDL.h>
 #include <string>
+//#include "h_Graphics.h"
+
 
 namespace Heyo {
+	
+	class Graphics;
 
 	typedef SDL_Rect Rect;
 	typedef SDL_Point Point;
@@ -17,7 +20,7 @@ namespace Heyo {
 		SDL_Texture * img_texture;
 		int m_width;
 		int m_height;
-		Heyo::Rect img_Rect;
+		SDL_Rect img_Rect;
 		int frameCount;
 		int frame;
 		int frameDivider;
@@ -26,8 +29,8 @@ namespace Heyo {
 		void clear();
 		int getWidth();
 		int getHeight();
-		Rect getRect();
-		bool setRect(Rect clip); // $BOOBS: Change the para to Rect & clip, to save space
+		SDL_Rect getRect();
+		bool setRect(SDL_Rect clip); // $BOOBS: Change the para to Rect & clip, to save space
 
 		Texture();
 		~Texture();
