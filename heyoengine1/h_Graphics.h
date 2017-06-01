@@ -1,8 +1,12 @@
 #pragma once
+
+#include "h_Image.h"
 #include <SDL.h>
 #include <string>
 
 namespace Heyo {
+
+	typedef Uint32 Uint32;
 
 	class Graphics
 	{
@@ -11,10 +15,13 @@ namespace Heyo {
 		const int SCREEN_HEIGHT;
 		const std::string m_title;
 
+		friend class Texture;
+
 	private:
 		SDL_Window * m_window;
 		SDL_Renderer * m_renderer;
 		SDL_Texture * m_texture;
+		SDL_Surface * m_winSurface;
 
 		Uint32 * buffer1;
 
@@ -23,7 +30,9 @@ namespace Heyo {
 		Graphics(int width, int height, std::string title);
 		~Graphics();
 
-		void Update();
+		void update();
+		//void update(Texture & p_texture);
+		//void update(Texture & p_texture, Coord clip);
 
 		void drawPixel(int x, int y, Uint8 r = 0xFF, Uint8 g = 0xFF, Uint8 b = 0xFF);
 

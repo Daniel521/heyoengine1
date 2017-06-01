@@ -27,16 +27,25 @@ namespace Heyo {
 	Graphics::~Graphics()
 	{
 		Close();
+		
 	}
 
 
-	void Graphics::Update()
+	void Graphics::update()
 	{
 		SDL_UpdateTexture(m_texture, NULL, buffer1, SCREEN_WIDTH * sizeof(Uint32));
 		SDL_RenderClear(m_renderer);
 		SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
 		SDL_RenderPresent(m_renderer);
 	}
+
+	/*
+	void Graphics::update(Texture & p_texture)
+	{
+		SDL_RenderCopy(m_renderer, p_texture.img_texture, &p_texture.img_Rect, NULL);
+		SDL_RenderPresent(m_renderer);
+	}
+	*/
 
 	void Graphics::drawPixel(int x, int y, Uint8 r, Uint8 g, Uint8 b)
 	{
@@ -82,6 +91,11 @@ namespace Heyo {
 		{
 			SDL_Log("Window failed to create: %s", SDL_GetError());
 			return false;
+		}
+		else
+		{
+			// Get window surface
+			m_winSurface = SDL_GetWindowSurface(m_window);
 		}
 
 		// Make Renderer
