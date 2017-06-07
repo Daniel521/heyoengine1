@@ -284,7 +284,6 @@ namespace Heyo {
 		};
 	private:
 		SDL_Event m_event;
-		bool curEvent;
 
 	public:
 		Event();

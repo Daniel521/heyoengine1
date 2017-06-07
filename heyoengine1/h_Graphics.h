@@ -8,6 +8,8 @@
 
 namespace Heyo {
 
+	class Sprite;
+
 	typedef Uint32 Uint32;
 
 	class Graphics
@@ -18,6 +20,7 @@ namespace Heyo {
 		const std::string m_title;
 
 		friend class Texture;
+		friend class Image;
 
 	private:
 		SDL_Window * m_window;
@@ -32,8 +35,11 @@ namespace Heyo {
 		Graphics(int width, int height, std::string title);
 		~Graphics();
 
+		// Heyo
+		// How's life?
 		void update();
 		void update(Texture & p_texture);
+		void update(Sprite & p_sprite);
 		//void update(Texture & p_texture, Coord clip);
 
 		void render();

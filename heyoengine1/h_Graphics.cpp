@@ -1,4 +1,5 @@
 #include "h_Graphics.h"
+#include "h_Sprite.h"
 
 namespace Heyo {
 
@@ -30,7 +31,7 @@ namespace Heyo {
 		
 	}
 
-
+	// Heyo
 	void Graphics::update()
 	{
 		SDL_UpdateTexture(m_texture, NULL, buffer1, SCREEN_WIDTH * sizeof(Uint32));
@@ -43,6 +44,11 @@ namespace Heyo {
 	{
 		SDL_RenderCopy(m_renderer, p_texture.img_texture, &p_texture.img_Rect, NULL);
 		//SDL_RenderPresent(m_renderer);
+	}
+
+	void Graphics::update(Sprite & p_sprite)
+	{
+		SDL_RenderCopy(m_renderer, p_sprite.m_image.m_texture, p_sprite.getcurRect(), NULL);  
 	}
 	
 

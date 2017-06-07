@@ -126,11 +126,13 @@
     <ClInclude Include="h_Event.h" />
     <ClInclude Include="h_Graphics.h" />
     <ClInclude Include="h_Image.h" />
+    <ClInclude Include="h_Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="h_Event.cpp" />
     <ClCompile Include="h_Graphics.cpp" />
     <ClCompile Include="h_Image.cpp" />
+    <ClCompile Include="h_Sprite.cpp" />
     <ClCompile Include="t_Main.cpp" />
   </ItemGroup>
   <ItemGroup>

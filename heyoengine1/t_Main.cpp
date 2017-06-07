@@ -1,31 +1,40 @@
 #include "h_Graphics.h"
 #include "h_Event.h"
+#include "h_Sprite.h"
 #include <SDL.h>
 #include <iostream>
 
 //using namespace Heyo;
 using namespace std;
+// Ideas on the root of the problem?
+// the upate function is taking in the wrong rect
+// I did the rect array wrong in the sprite class
+// the rects... it's most likely the rects.
+// try removing the whole operator overload thingy and just add a switch function. if that works just add the switch function in the operator[]
+// Get some sleep
+
 
 int main(int argc, char * argv[]) {
 	Heyo::Graphics graphics(900, 650, "Heyo");
 	Heyo::Texture texture;
+	Heyo::Sprite sprite;
 	texture.loadTexture("blah.png", graphics);
+	if (sprite.loadSprite("hi.png", graphics, 200, 200, 2, 2) == false)
+		cout << "Damn!" << endl;
+
 	Heyo::Event events;
 
 
 	bool quit = false;
-	float x = 0;
-	float y = 0;
-	Heyo::Uint32 red = 0x00;
+
+	int choice = 0;
 	// LOOP
 	while (quit == false) {
 
-		graphics.drawPixel(x, y, red, 150, 150);
-		
-		red += .42;
-		red %= 255;
-		graphics.update();
+
 		graphics.update(texture);
+		graphics.update(sprite);
+		
 		graphics.render();
 
 		if (Heyo::processEvent(events)) {
@@ -35,21 +44,21 @@ int main(int argc, char * argv[]) {
 			if (events.type() == Heyo::Event::types::KEYDOWN)
 			{
 				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
-					red = 0xfe;
+					sprite[1];
 				if (events.keyPressed() == Heyo::Event::keys::K_w)
-					y -= 1;
+					choice = 0;
 				if (events.keyPressed() == Heyo::Event::keys::K_s)
-					y += 1;
+					choice = 1;
 				if (events.keyPressed() == Heyo::Event::keys::K_a)
-					x -= 1;
+					choice = 2;
 				if (events.keyPressed() == Heyo::Event::keys::K_d)
-					x += 1;
+					choice = 3;
 			}
 
-			if (events.type() == Heyo::Event::types::KEYUP) {
-				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
-					red = 0x00;
-			}
+			//if (events.type() == Heyo::Event::types::KEYUP) {
+			//	if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
+			//		;
+			//}
 		}
 
 
