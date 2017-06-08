@@ -19,7 +19,6 @@ namespace Heyo {
 		const int SCREEN_HEIGHT;
 		const std::string m_title;
 
-		friend class Texture;
 		friend class Image;
 
 	private:
@@ -35,12 +34,12 @@ namespace Heyo {
 		Graphics(int width, int height, std::string title);
 		~Graphics();
 
+		// Clears the renderer
+		void clear();
 		// Heyo
 		// How's life?
 		void update();
-		void update(Texture & p_texture);
-		void update(Sprite & p_sprite);
-		//void update(Texture & p_texture, Coord clip);
+		void update(Sprite & p_sprite, Rect & destin);
 
 		void render();
 

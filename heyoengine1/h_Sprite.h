@@ -53,11 +53,13 @@ namespace Heyo {
 		// returns sprite sheet's total height
 		int getTotalHeight();
 		// returns a Rect of the current frame
-		Rect *  getcurRect();
+		const Rect &  getcurRect();
 		// changes the current frame, 0 is first frame
-		Sprite operator[](int val);// $BOOBS: Change the para to Rect & clip, to save space
+		Sprite & operator[](int val);// $BOOBS: Change the para to Rect & clip, to save space
 		// returns the amount of frames in sheet
 		int totalFrames();
+
+		void swap(int val);
 
 		friend class Graphics;
 	};

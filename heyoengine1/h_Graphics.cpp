@@ -31,6 +31,11 @@ namespace Heyo {
 		
 	}
 
+	void Graphics::clear()
+	{
+		SDL_RenderClear(m_renderer);
+	}
+
 	// Heyo
 	void Graphics::update()
 	{
@@ -40,15 +45,9 @@ namespace Heyo {
 		//SDL_RenderPresent(m_renderer);
 	}
 
-	void Graphics::update(Texture & p_texture)
+	void Graphics::update(Sprite & p_sprite, Rect & destin)
 	{
-		SDL_RenderCopy(m_renderer, p_texture.img_texture, &p_texture.img_Rect, NULL);
-		//SDL_RenderPresent(m_renderer);
-	}
-
-	void Graphics::update(Sprite & p_sprite)
-	{
-		SDL_RenderCopy(m_renderer, p_sprite.m_image.m_texture, p_sprite.getcurRect(), NULL);  
+		SDL_RenderCopy(m_renderer, p_sprite.m_image.m_texture, &p_sprite.getcurRect(), &destin);  
 	}
 	
 

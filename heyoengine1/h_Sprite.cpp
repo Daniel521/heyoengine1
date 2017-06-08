@@ -19,7 +19,7 @@ namespace Heyo {
 	bool Sprite::loadSprite(std::string imgAddress, Graphics & graphics, int indiWidth, int indiHeight, int numX, int numY)
 	{
 		// Step 1: load image
-		if (m_image.loadImage(imgAddress, 2, graphics) == false) {
+		if (m_image.loadImage(imgAddress, graphics) == false) {
 			SDL_Log("%s image did not load.\n");
 			return false;
 		}
@@ -44,26 +44,29 @@ namespace Heyo {
 			for (int x = 0; x < numX; x++) {
 				m_rect[curFrame].x = xStartPos;
 				m_rect[curFrame].y = yStartPos;
-				xStartPos += indiWidth + 1;
+				xStartPos += indiWidth;
+				curFrame++;
 			}
-			yStartPos += indiHeight + 1;
+			yStartPos += indiHeight;
 		}
 		return true;
 	}
 
 
-	Rect * Sprite::getcurRect()
+	const Rect & Sprite::getcurRect()
 	{
-		return &m_rect[m_curFrame];
+		return m_rect[m_curFrame];
 	}
 
-	Sprite Sprite::operator[](int val)
+	Sprite & Sprite::operator[](int val)
 	{
-		if (val < 4)
-			m_curFrame = val;
-		if (val >= 4)
-			cout << "Que" << endl;
+		swap(val);
 		return *this;
+	}
+
+	void Sprite::swap(int val)
+	{
+		m_curFrame = val;
 	}
 
 

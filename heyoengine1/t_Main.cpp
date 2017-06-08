@@ -6,34 +6,52 @@
 
 //using namespace Heyo;
 using namespace std;
-// Ideas on the root of the problem?
-// the upate function is taking in the wrong rect
-// I did the rect array wrong in the sprite class
-// the rects... it's most likely the rects.
-// try removing the whole operator overload thingy and just add a switch function. if that works just add the switch function in the operator[]
-// Get some sleep
 
 
 int main(int argc, char * argv[]) {
 	Heyo::Graphics graphics(900, 650, "Heyo");
-	Heyo::Texture texture;
+	Heyo::Sprite blah;
 	Heyo::Sprite sprite;
-	texture.loadTexture("blah.png", graphics);
-	if (sprite.loadSprite("hi.png", graphics, 200, 200, 2, 2) == false)
+	Heyo::Sprite title;
+	Heyo::Sprite heyo;
+	blah.loadSprite("blah.png", graphics, 1018, 642);
+	if (sprite.loadSprite("Greg.png", graphics, 32, 32, 7, 1) == false)
 		cout << "Damn!" << endl;
+	if (title.loadSprite("gregtheflower.png", graphics, 85, 10, 1, 1) == false)
+		cout << "Damn!" << endl;
+	if (heyo.loadSprite("HeyoEngine.png", graphics, 97, 24, 1, 1) == false)
+		cout << "Damn!" << endl;
+
+	Heyo::Rect spriteR = { 350,200,200,200 };
+	Heyo::Rect titleR = { 200, 50, 500, 100 };
+	Heyo::Rect heyoR = { 250, 500, 400, 100 };
+	Heyo::Rect blahR = { 520, 290, 60, 35 };
+
 
 	Heyo::Event events;
 
 
+
+
 	bool quit = false;
 
-	int choice = 0;
+	int divider = 12;
+	int count = 0;
+	int curFrame = 0;
+	bool show = false;
 	// LOOP
 	while (quit == false) {
+		graphics.clear();
+		if (count % divider == 0)
+			curFrame++;
+		curFrame %= 6;
+		count++;
 
-
-		graphics.update(texture);
-		graphics.update(sprite);
+		graphics.update(sprite[curFrame], spriteR);
+		graphics.update(title[0], titleR);
+		graphics.update(heyo[0], heyoR);
+		if (show == true)
+			graphics.update(blah, blahR);
 		
 		graphics.render();
 
@@ -44,21 +62,21 @@ int main(int argc, char * argv[]) {
 			if (events.type() == Heyo::Event::types::KEYDOWN)
 			{
 				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
-					sprite[1];
+					show = true;
 				if (events.keyPressed() == Heyo::Event::keys::K_w)
-					choice = 0;
+					;
 				if (events.keyPressed() == Heyo::Event::keys::K_s)
-					choice = 1;
+					;
 				if (events.keyPressed() == Heyo::Event::keys::K_a)
-					choice = 2;
+					;
 				if (events.keyPressed() == Heyo::Event::keys::K_d)
-					choice = 3;
+					;
 			}
 
-			//if (events.type() == Heyo::Event::types::KEYUP) {
-			//	if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
-			//		;
-			//}
+			if (events.type() == Heyo::Event::types::KEYUP) {
+				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
+					show = false;
+			}
 		}
 
 
