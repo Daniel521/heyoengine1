@@ -13,7 +13,6 @@ namespace Heyo {
 	{
 		if (m_rect != NULL)
 			delete[] m_rect;
-		// Bye
 	}
 
 	bool Sprite::loadSprite(std::string imgAddress, Graphics & graphics, int indiWidth, int indiHeight, int numX, int numY)
@@ -52,6 +51,26 @@ namespace Heyo {
 		return true;
 	}
 
+	int Sprite::getTotalWidth()
+	{
+		return m_image.getWidth();
+	}
+
+	int Sprite::getTotalHeight()
+	{
+		return m_image.getHeight();
+	}
+
+
+	int Sprite::getWidth()
+	{
+		return m_spriteWidth;
+	}
+
+	int Sprite::getHeight()
+	{
+		return m_spriteHeight;
+	}
 
 	const Rect & Sprite::getcurRect()
 	{
@@ -62,6 +81,11 @@ namespace Heyo {
 	{
 		swap(val);
 		return *this;
+	}
+
+	int Sprite::totalFrames()
+	{
+		return m_numFrames;
 	}
 
 	void Sprite::swap(int val)

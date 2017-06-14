@@ -27,6 +27,12 @@
     <ClInclude Include="h_Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="h_Sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="h_heyo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="h_Graphics.cpp">
@@ -42,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="h_Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="h_Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="h_heyo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

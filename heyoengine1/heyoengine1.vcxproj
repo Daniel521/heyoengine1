@@ -69,12 +69,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>G:\Coding\LibAndIncludes\SDL2_image-2.0.1\include;G:\Coding\LibAndIncludes\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Coding\LibAndIncludes\SDL2_image-2.0.1\lib\x64;G:\Coding\LibAndIncludes\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\Coding\LibAndIncludes\SDL2_mixer-2.0.1\include;G:\Coding\LibAndIncludes\SDL2_image-2.0.1\include;G:\Coding\LibAndIncludes\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Coding\LibAndIncludes\SDL2_mixer-2.0.1\lib\x64;G:\Coding\LibAndIncludes\SDL2_image-2.0.1\lib\x64;G:\Coding\LibAndIncludes\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>G:\Coding\LibAndIncludes\SDL2_image-2.0.1\include;G:\Coding\LibAndIncludes\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Coding\LibAndIncludes\SDL2_image-2.0.1\lib\x64;G:\Coding\LibAndIncludes\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\Coding\LibAndIncludes\SDL2_mixer-2.0.1\include;G:\Coding\LibAndIncludes\SDL2_image-2.0.1\include;G:\Coding\LibAndIncludes\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Coding\LibAndIncludes\SDL2_mixer-2.0.1\lib\x64;G:\Coding\LibAndIncludes\SDL2_image-2.0.1\lib\x64;G:\Coding\LibAndIncludes\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -118,21 +118,25 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="h_Event.h" />
     <ClInclude Include="h_Graphics.h" />
+    <ClInclude Include="h_heyo.h" />
     <ClInclude Include="h_Image.h" />
     <ClInclude Include="h_Sprite.h" />
+    <ClInclude Include="h_Sound.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="h_Event.cpp" />
     <ClCompile Include="h_Graphics.cpp" />
+    <ClCompile Include="h_heyo.cpp" />
     <ClCompile Include="h_Image.cpp" />
     <ClCompile Include="h_Sprite.cpp" />
+    <ClCompile Include="h_Sound.cpp" />
     <ClCompile Include="t_Main.cpp" />
   </ItemGroup>
   <ItemGroup>

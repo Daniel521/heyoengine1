@@ -77,13 +77,6 @@ namespace Heyo {
 
 	bool Graphics::Init()
 	{
-		// Init SDL
-		if (SDL_Init(SDL_INIT_VIDEO) < 0)
-		{
-			SDL_Log("SDL Video Init: %s", SDL_GetError());
-			return false;
-		}
-
 
 		std::string blah = m_title;
 		// Make Window

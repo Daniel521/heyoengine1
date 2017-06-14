@@ -37,8 +37,10 @@ namespace Heyo {
 		Image();
 		~Image();
 		bool loadImage(std::string imgAddress, Graphics & graphics);
-		const int & getWith();
+		const int & getWidth();
 		const int & getHeight();
+		// Changes how percentage of a color on an image
+		void setColorPercent(Uint8 red = 100, Uint8 green = 100, Uint8 blue = 100);
 
 
 		friend class Sprite;

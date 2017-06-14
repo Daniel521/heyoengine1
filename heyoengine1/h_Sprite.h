@@ -12,15 +12,14 @@
 #include <SDL.h>
 #include <string>
 #include "h_Image.h"
+#include "h_heyo.h"
 //#include "h_Graphics.h"
 
 
 namespace Heyo {
 
 	class Graphics;
-	class Image;
 
-	typedef SDL_Rect Rect;
 	typedef SDL_Point Point;
 	typedef SDL_Point Coord;
 
@@ -30,7 +29,6 @@ namespace Heyo {
 		Image m_image;
 		Rect * m_rect;
 		int m_numFrames;	// Total number of frames
-	public:	// Delete this later
 		int m_curFrame;		// Current frame count, 0 is first frame
 		int m_spriteWidth;
 		int m_spriteHeight;
@@ -52,13 +50,18 @@ namespace Heyo {
 		int getTotalWidth();
 		// returns sprite sheet's total height
 		int getTotalHeight();
+		// returns each frame's width
+		int getWidth();
+		// returns each frame's height
+		int getHeight();
 		// returns a Rect of the current frame
 		const Rect &  getcurRect();
 		// changes the current frame, 0 is first frame
-		Sprite & operator[](int val);// $BOOBS: Change the para to Rect & clip, to save space
+		Sprite & operator[](int val);
 		// returns the amount of frames in sheet
+		void setColorPercent(Uint8 red = 100, Uint8 green = 100, Uint8 blue = 100)
+		{ m_image.setColorPercent(red, green, blue); }
 		int totalFrames();
-
 		void swap(int val);
 
 		friend class Graphics;

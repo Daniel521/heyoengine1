@@ -6,16 +6,11 @@ namespace Heyo {
 
 	Image::Image() : m_surface(NULL), m_texture(NULL), m_width(0), m_height(0), m_imgtype(0) // Done?
 	{
-		int imgFlags = IMG_INIT_PNG;
-		if (!(IMG_Init(imgFlags) & imgFlags)) {
-			SDL_Log("SDL_image could not initialize! SDL_image error: %s\n", IMG_GetError());
-		}
 	}
 
 	Image::~Image()	// Done?
 	{
 		clear();
-		IMG_Quit();
 	}
 
 	void Image::clear()	// Done?
@@ -61,7 +56,7 @@ namespace Heyo {
 		}
 	}
 
-	const int & Image::getWith()
+	const int & Image::getWidth()
 	{
 		return m_width;
 	}
@@ -69,6 +64,15 @@ namespace Heyo {
 	const int & Image::getHeight()
 	{
 		return m_height;
+	}
+
+	void Image::setColorPercent(Uint8 red, Uint8 green, Uint8 blue)
+	{
+		red = (red/100.0f) * 255;
+		green = (green / 100.0f) * 255;
+		blue = (blue / 100.0f) * 255;
+
+		SDL_SetTextureColorMod(m_texture, red, green, blue);
 	}
 
 }

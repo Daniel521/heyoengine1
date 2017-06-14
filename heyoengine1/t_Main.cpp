@@ -1,7 +1,8 @@
+#include "h_heyo.h"
 #include "h_Graphics.h"
 #include "h_Event.h"
 #include "h_Sprite.h"
-#include <SDL.h>
+#include "h_Sound.h"
 #include <iostream>
 
 //using namespace Heyo;
@@ -9,6 +10,7 @@ using namespace std;
 
 
 int main(int argc, char * argv[]) {
+	Heyo::initHeyo();
 	Heyo::Graphics graphics(900, 650, "Heyo");
 	Heyo::Sprite blah;
 	Heyo::Sprite sprite;
@@ -27,10 +29,13 @@ int main(int argc, char * argv[]) {
 	Heyo::Rect heyoR = { 250, 500, 400, 100 };
 	Heyo::Rect blahR = { 520, 290, 60, 35 };
 
+	Heyo::Sound clap;
+	clap.loadSound("app.wav");
+
 
 	Heyo::Event events;
 
-
+	sprite.setColorPercent(100, 100, 100);
 
 
 	bool quit = false;
@@ -64,7 +69,7 @@ int main(int argc, char * argv[]) {
 				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
 					show = true;
 				if (events.keyPressed() == Heyo::Event::keys::K_w)
-					;
+					Heyo::playSound(clap);
 				if (events.keyPressed() == Heyo::Event::keys::K_s)
 					;
 				if (events.keyPressed() == Heyo::Event::keys::K_a)
@@ -82,5 +87,6 @@ int main(int argc, char * argv[]) {
 
 	}
 
+	Heyo::closeHeyo();
 	return 0;
 }
