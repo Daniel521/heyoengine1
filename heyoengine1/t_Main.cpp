@@ -32,6 +32,10 @@ int main(int argc, char * argv[]) {
 	Heyo::Sound clap;
 	clap.loadSound("app.wav");
 
+	Heyo::Music song;
+	song.loadMusic("music1.wav");
+	song.start();
+
 
 	Heyo::Event events;
 
@@ -67,20 +71,32 @@ int main(int argc, char * argv[]) {
 			if (events.type() == Heyo::Event::types::KEYDOWN)
 			{
 				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
+				{
 					show = true;
+					song.pause();
+				}
 				if (events.keyPressed() == Heyo::Event::keys::K_w)
 					Heyo::playSound(clap);
 				if (events.keyPressed() == Heyo::Event::keys::K_s)
 					;
 				if (events.keyPressed() == Heyo::Event::keys::K_a)
-					;
+				{
+					song.setVolume(50);
+					clap.setVolume(10);
+				}
 				if (events.keyPressed() == Heyo::Event::keys::K_d)
-					;
+				{
+					song.setVolume(100);
+					clap.setVolume(100);
+				}
 			}
 
 			if (events.type() == Heyo::Event::types::KEYUP) {
 				if (events.keyPressed() == Heyo::Event::keys::K_SPACE)
+				{
 					show = false;
+					song.resume();
+				}
 			}
 		}
 

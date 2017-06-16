@@ -13,9 +13,6 @@ namespace Heyo {
 	}
 
 	Graphics::Graphics(int width, int height, std::string title) : SCREEN_WIDTH(width), SCREEN_HEIGHT(height), m_title(title)
-		/*	int width : width of window,
-			int height: height of window,
-			string title : title of the window*/
 	{
 		if (!Init())
 		{
@@ -146,6 +143,9 @@ namespace Heyo {
 
 		if (m_texture)
 			SDL_DestroyTexture(m_texture);
+
+		if (m_winSurface)
+			SDL_FreeSurface(m_winSurface);
 
 		if (buffer1)
 			delete[] buffer1;
