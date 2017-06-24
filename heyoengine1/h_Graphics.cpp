@@ -39,7 +39,6 @@ namespace Heyo {
 		SDL_UpdateTexture(m_texture, NULL, buffer1, SCREEN_WIDTH * sizeof(Uint32));
 		SDL_RenderClear(m_renderer);
 		SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
-		//SDL_RenderPresent(m_renderer);
 	}
 
 	void Graphics::update(Sprite & p_sprite, Rect & destin)

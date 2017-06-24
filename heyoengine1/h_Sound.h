@@ -4,11 +4,6 @@
 
 namespace Heyo {
 
-	class Sound;
-	class Music;
-
-	void playSound(Sound & sound);
-
 	class Sound
 	{
 	private:
@@ -23,8 +18,22 @@ namespace Heyo {
 
 		void setVolume(Uint8 volume = 100);
 
-		friend void playSound(Sound & sound);
+		// Plays the sound from the start
+		// int millisec : how many seconds to fade in
+		void play(int millisecs = 0);
+
+		void pause() { Mix_Pause(m_channel); }
+		
+		void resume() { Mix_Resume(m_channel); }
+
+		void stop();
+
+		bool playing() { return Mix_Playing(m_channel); }
+
+		Sound & operator=(const Sound & sound);
+
 	};
+
 
 	class Music
 	{
@@ -40,14 +49,14 @@ namespace Heyo {
 
 		bool playing();
 
-		void end();
+		void stop();
 
 		// Sets music's volume
 		// From a value of 0-100,
 		// default value is 100
 		void setVolume(Uint8 volume = 100);
 
-		void start();
+		void play();
 
 		void pause() { Mix_PauseMusic(); }
 

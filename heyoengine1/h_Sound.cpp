@@ -1,16 +1,11 @@
 #include "h_Sound.h"
 #include <SDL.h>
+#include <iostream>
+using namespace std;
 
 namespace Heyo {
 
-	void playSound(Sound & sound)
-	{
-		sound.m_channel = Mix_PlayChannel(-1, sound.m_chunk, 0);
-	}
-
-
-
-	Sound::Sound() : m_chunk(NULL)
+	Sound::Sound() : m_chunk(NULL), m_channel(-1)
 	{
 	}
 
@@ -34,7 +29,28 @@ namespace Heyo {
 	{
 		volume = (volume * 128) / 100;
 		m_volume = volume;
-		Mix_VolumeChunk(m_chunk, volume);
+		Mix_Volume(m_channel, volume);
+	}
+
+	void Sound::play(int millisecs)
+	{
+		if (m_channel != -1)
+			Mix_HaltChannel(m_channel);
+		m_channel = Mix_FadeInChannel(m_channel, m_chunk, 0, millisecs);
+	}
+
+	void Sound::stop()
+	{
+		Mix_HaltChannel(m_channel);
+	}
+
+	Sound & Sound::operator=(const Sound & sound)
+	{
+		m_channel = -1;
+		m_chunk = sound.m_chunk;
+		m_volume = 128;
+
+		return *this;
 	}
 
 	Music::Music() : m_music(NULL), m_volume(100)
@@ -62,7 +78,7 @@ namespace Heyo {
 		return Mix_PlayingMusic();
 	}
 
-	void Music::end()
+	void Music::stop()
 	{
 		Mix_HaltMusic();
 	}
@@ -74,7 +90,7 @@ namespace Heyo {
 		Mix_VolumeMusic(volume);
 	}
 
-	void Music::start()
+	void Music::play()
 	{
 		Mix_PlayMusic(m_music, 0);
 	}

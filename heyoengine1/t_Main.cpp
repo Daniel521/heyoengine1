@@ -16,12 +16,12 @@ int main(int argc, char * argv[]) {
 	Heyo::Sprite sprite;
 	Heyo::Sprite title;
 	Heyo::Sprite heyo;
-	blah.loadSprite("blah.png", graphics, 1018, 642);
-	if (sprite.loadSprite("Greg.png", graphics, 32, 32, 7, 1) == false)
+	blah.loadSprite("Data/blah.png", graphics, 1018, 642);
+	if (sprite.loadSprite("Data/Greg.png", graphics, 32, 32, 7, 1) == false)
 		cout << "Damn!" << endl;
-	if (title.loadSprite("gregtheflower.png", graphics, 85, 10, 1, 1) == false)
+	if (title.loadSprite("Data/gregtheflower.png", graphics, 85, 10, 1, 1) == false)
 		cout << "Damn!" << endl;
-	if (heyo.loadSprite("HeyoEngine.png", graphics, 97, 24, 1, 1) == false)
+	if (heyo.loadSprite("Data/HeyoEngine.png", graphics, 97, 24, 1, 1) == false)
 		cout << "Damn!" << endl;
 
 	Heyo::Rect spriteR = { 350,200,200,200 };
@@ -30,11 +30,14 @@ int main(int argc, char * argv[]) {
 	Heyo::Rect blahR = { 520, 290, 60, 35 };
 
 	Heyo::Sound clap;
-	clap.loadSound("app.wav");
+	clap.loadSound("Data/app.wav");
+
+	Heyo::Sound ding;
+	ding.loadSound("Data/pisses_me.wav");
 
 	Heyo::Music song;
-	song.loadMusic("music1.wav");
-	song.start();
+	song.loadMusic("Data/music1.wav");
+	song.play();
 
 
 	Heyo::Event events;
@@ -76,7 +79,7 @@ int main(int argc, char * argv[]) {
 					song.pause();
 				}
 				if (events.keyPressed() == Heyo::Event::keys::K_w)
-					Heyo::playSound(clap);
+					clap.play();
 				if (events.keyPressed() == Heyo::Event::keys::K_s)
 					;
 				if (events.keyPressed() == Heyo::Event::keys::K_a)
@@ -97,6 +100,8 @@ int main(int argc, char * argv[]) {
 					show = false;
 					song.resume();
 				}
+				if (events.keyPressed() == Heyo::Event::keys::K_w)
+					;//clap.pause();
 			}
 		}
 
@@ -106,3 +111,5 @@ int main(int argc, char * argv[]) {
 	Heyo::closeHeyo();
 	return 0;
 }
+
+ 
